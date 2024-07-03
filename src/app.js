@@ -1,34 +1,57 @@
-import express from 'express';
+import express from 'express'
+import connectNaDatabase from './config/dbConnect.js'
 
-const app = express();
+const conexao = await connectNaDatabase();
+
+conexao.on("error", (erro) =>{
+    console.error("Erro de conexao", erro)
+})
+
+conexao.once("open", () =>{
+    console.log("Conexao com o banco feita com sucesso")
+})
+
+const app = express()
 app.use(express.json())
 
 const livros = [
     {
-        id: 1,
-        titulo: "O Senhor dos Anéis"
+      id: 1,
+      titulo: "O Senhor dos Anéis"
     },
     {
-        id: 2,
-        titulo: "O Hobbit"
+      id: 2,
+      titulo: "O Hobbit"
     }
-]
+  ]
 
-function buscaLivro(id){
+  function buscaLivro(id) {
     return livros.findIndex(livro =>{
-        livro.id === Number(id);
+        return livro.id === Number(id)
     })
-}
+  }
 app.get("/", (req, res) => {
     res.status(200).send("Jovens animados");
-});
+  });
 
 app.get("/livros", (req, res) =>{
     res.status(200).json(livros);
 })
 app.get("/livros/:id", (req, res) =>{
     const index = buscaLivro(req.params.id)
-    res.status(200).json(livros[index]);
+    res.status(200).json(livros[index])
+})
+app.post("/livros", (req, res) =>{
+    livros.push(req.body)
+    res.status(201).send("Livro cadastrado com sucesso")
+})
+app.put("/livros/:id", (req, res) =>{
+    const index = buscaLivro(req.params.id);
+    livros[index].titulo = req.body.titulo;
+    res.status(200).json(livros);
 })
 
+
+
 export default app;
+
