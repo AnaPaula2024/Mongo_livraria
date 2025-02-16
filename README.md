@@ -40,8 +40,8 @@ console.log(livro); // { id: 1, titulo: "O Senhor dos Anéis" }
 
 Sinta-se à vontade para abrir issues e pull requests para melhorias e correções.
 
-## Licença
+## 📝 Licença
 
-Este projeto está licenciado sob a licença MIT.
+Este projeto está licenciado sob a licença MIT. Consulte o arquivo [LICENSE](./LICENSE) para mais informações.
 
 ---
