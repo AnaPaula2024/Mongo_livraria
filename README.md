@@ -42,6 +42,6 @@ Sinta-se à vontade para abrir issues e pull requests para melhorias e correçõ
 
 ## 📝 Licença
 
-Este projeto está licenciado sob a licença MIT. Consulte o arquivo [LICENSE](./LICENSE) para mais informações.
+Este projeto está licenciado sob a licença MIT. Consulte o arquivo [LICENSE](./LICENSE.txt) para mais informações.
 
 ---
